@@ -9,17 +9,24 @@ namespace ACM.BL
 {
     public class OrderController
     {
+        private CustomerRepository customerRepository { get; set; }
+        private OrderRepository orderRepository { get; set; }
+        private InventoryRepository inventoryRepository { get; set; }
+        private EmailLibrary emailLibrary { get; set; }
+
+        public OrderController()
+        {
+            customerRepository = new CustomerRepository();
+            orderRepository = new OrderRepository();
+            inventoryRepository = new InventoryRepository();
+            emailLibrary = new EmailLibrary();
+        }
+
         public void PlaceOrder(Customer customer, Order order, Payment payment, bool allowSplitOrders, bool emailReceipt)
         {
-            var customerRepository = new CustomerRepository();
             customerRepository.Add(customer);
-
-            var orderRepository = new OrderRepository();
             orderRepository.Add(order);
-
-            var inventoryRepository = new InventoryRepository();
             inventoryRepository.OrderItems(order, allowSplitOrders);
-
             payment.ProcessPayment(payment);
 
             if (emailReceipt)
@@ -27,7 +34,6 @@ namespace ACM.BL
                 customer.ValidateEmail();
                 customerRepository.Update();
 
-                var emailLibrary = new EmailLibrary();
                 emailLibrary.SendLibrary(customer.EmailAddress, "Here is your receipt");
             }
         }
