@@ -9,6 +9,11 @@ namespace ACM.Win
     {
         private void button1_Click(object sender, EventArgs e)
         {
+            PlaceOrder();
+        }
+
+        private void PlaceOrder()
+        {
             var customer = new Customer();
             // Populate the customer instance
 
@@ -21,25 +26,10 @@ namespace ACM.Win
             var payment = new Payment();
             // Populate the payment instance
 
-            var customerRepository = new CustomerRepository();
-            customerRepository.Add(customer);
+            var orderController = new OrderController();
 
-            var orderRepository = new OrderRepository();
-            orderRepository.Add(order);
-
-            var inventoryRepository = new InventoryRepository();
-            inventoryRepository.OrderItems(order, allowSplitOrders);
-
-            payment.ProcessPayment(payment);
-
-            if (emailReceipt)
-            {
-                customer.ValidateEmail();
-                customerRepository.Update();
-
-                var emailLibrary = new EmailLibrary();
-                emailLibrary.SendLibrary(customer.EmailAddress, "Here is your receipt");
-            }
+            orderController.PlaceOrder(customer, order, payment, allowSplitOrders, emailReceipt);
         }
+
     }
 }

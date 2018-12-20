@@ -46,6 +46,7 @@
     <Compile Include="Inventory.cs" />
     <Compile Include="InventoryRepository.cs" />
     <Compile Include="Order.cs" />
+    <Compile Include="OrderController.cs" />
     <Compile Include="OrderRepository.cs" />
     <Compile Include="Payment.cs" />
     <Compile Include="PaymentRepository.cs" />
