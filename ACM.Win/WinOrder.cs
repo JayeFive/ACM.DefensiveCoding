@@ -26,6 +26,9 @@ namespace ACM.Win
 
             var orderRepository = new OrderRepository();
             orderRepository.Add(order);
+
+            var inventoryRepository = new InventoryRepository();
+            inventoryRepository.OrderItems(order);
         }
     }
 }
