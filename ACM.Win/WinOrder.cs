@@ -20,15 +20,15 @@ namespace ACM.Win
             var order = new Order();
             // Populate the order instance
 
-            var allowSplitOrders = true;
-            var emailReceipt = true;
+            //var allowSplitOrders = true;
+            //var emailReceipt = true;
 
             var payment = new Payment();
             // Populate the payment instance
 
             var orderController = new OrderController();
 
-            orderController.PlaceOrder(customer, order, payment, allowSplitOrders, emailReceipt);
+            orderController.PlaceOrder(customer, order, payment, allowSplitOrders:false, emailReceipt:true);
         }
 
     }
