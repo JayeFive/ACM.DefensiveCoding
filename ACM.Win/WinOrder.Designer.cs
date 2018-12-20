@@ -1,6 +1,6 @@
 ﻿namespace ACM.Win
 {
-    partial class Form1
+    partial class WinOrder
     {
         /// <summary>
         /// Required designer variable.
