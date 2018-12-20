@@ -6,7 +6,17 @@ using System.Threading.Tasks;
 
 namespace ACM.BL
 {
-    class CustomerRepository
+    public class CustomerRepository
     {
+        public void Add(Customer customer)
+        {
+            // -- If this is a new customer, create the customer record --
+            // Determine whether the customer is an existing customer
+            // If not, validate customer information
+            // If valid,
+            // Open a connection
+            // Set stored procedures parameters with the customer data
+            // Call the save stored procedure
+        }
     }
 }
