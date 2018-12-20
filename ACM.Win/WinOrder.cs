@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ACM.BL;
+using Core.Common;
+using System;
 using System.Windows.Forms;
-using ACM.BL;
 
 namespace ACM.Win
 {
@@ -22,6 +16,7 @@ namespace ACM.Win
             // Populate the order instance
 
             var allowSplitOrders = true;
+            var emailReceipt = true;
 
             var payment = new Payment();
             // Populate the payment instance
@@ -36,6 +31,15 @@ namespace ACM.Win
             inventoryRepository.OrderItems(order, allowSplitOrders);
 
             payment.ProcessPayment(payment);
+
+            if (emailReceipt)
+            {
+                customer.ValidateEmail();
+                customerRepository.Update();
+
+                var emailLibrary = new EmailLibrary();
+                emailLibrary.SendLibrary(customer.EmailAddress, "Here is your receipt");
+            }
         }
     }
 }

@@ -8,5 +8,9 @@ namespace Core.Common
 {
     public class EmailLibrary
     {
+        public void SendLibrary(string emailAddress, string v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
