@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ACM.BL;
+using System;
 using System.Windows.Forms;
 
 namespace ACM.Win
@@ -15,6 +9,14 @@ namespace ACM.Win
         public PedometerWin()
         {
             InitializeComponent();
+        }
+
+        private void CalculateButton_Click(object sender, EventArgs e)
+        {
+            var customer = new Customer();
+            var result = customer.CalculatePercentageOfGoalSteps(GoalTextBox.Text, StepsTextBox.Text);
+
+            ResultLLabel.Text = "You reached " + result + "% of your goal!";
         }
     }
 }
