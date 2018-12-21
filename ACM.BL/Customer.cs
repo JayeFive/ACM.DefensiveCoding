@@ -27,7 +27,8 @@ namespace ACM.BL
         {
             // Try 2
             decimal result = 0;
-            var goalStepCount = Convert.ToDecimal(goalSteps);
+            decimal goalStepCount = 0;
+            decimal.TryParse(goalSteps, out goalStepCount);
 
             if (goalStepCount > 0)
             {
